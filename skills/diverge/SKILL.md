@@ -62,7 +62,7 @@ read-only-scout`.
 
 🔴 **`read-only-scout` is not a suggestion — it is the enforcement.** Its `tools: Read, Grep, Glob`
 frontmatter is an exclusive allowlist, so a branch is *mechanically incapable* of writing. Do **not** use
-`general-purpose` with a "don't write anything" instruction: that is `X-AGT-01` (prompt-as-enforcement),
+`general-purpose` with a "don't write anything" instruction: that is prompt-as-enforcement,
 the exact anti-pattern behind the 2026-06-17 incident, and it is how the source project ships.
 
 Each branch gets **only**: the problem, any context Nile supplied, its own frame prompt, and this
@@ -101,10 +101,10 @@ rewritten specifically to remove that layer: *"No decimal unless a tool actually
 tests passed."* Apply that here.
 
 Two independent reasons, both load-bearing:
-- **`X-ARS-01`** — scoring against a self-made rubric optimises the rubric (Goodhart). The source
+- **Self-made rubrics** — scoring against a rubric you wrote optimises the rubric (Goodhart). The source
   project's evals show exactly this: its huge deltas sit on dimensions its own output format
   guarantees, while its one format-neutral dimension moved **+0.83** at n=6.
-- **`X-AGT-06`** — voting ensembles collude. Use one converge pass with a stated reason, not a panel.
+- **Voting ensembles collude.** Use one converge pass with a stated reason, not a panel.
 
 ### ⚠️ The sentinel gate
 
@@ -163,7 +163,7 @@ worth taking, the packaging was not. Full evaluation, including why that project
 support its headline numbers and why `caveman` was rejected outright: KB *Divergent Ideation — Three
 Repos, What Survived Review (2026-08-02)*.
 
-Atoms: `A-AGT-05` (independence ≠ diversity; frames are the coverage mechanism — refines `A-AGT-02`) ·
-`A-AGT-03` (a subagent's value is the clean slate) · `X-AGT-01` (prompt-as-enforcement) ·
-`X-AGT-06` (voting ensembles collude) · `X-ARS-01` (Goodhart on a weak proxy) ·
-`A-ARS-01` (define the convergence criterion before iterating).
+The principles it rests on, stated plainly: independence is not diversity (the *frames* are what
+create coverage, not the mere fact of separate agents) · a subagent's value is its clean slate ·
+containment belongs in tooling, never in a prompt instruction · voting ensembles collude ·
+define the convergence criterion before you start iterating.
