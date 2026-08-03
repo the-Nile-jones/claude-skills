@@ -65,7 +65,7 @@ If Nile wants the GitHub-native picture, add a Mermaid `mindmap` block of the **
 
 ## Opt-in SAVE (only when Nile asks "save this")
 Route the write through `scripts/emit_map.py` — it owns the mount-liveness check (non-empty vault dir), deterministic filename (`YYYY-MM-DD--<slug>--<source-hash>.md`, stable source-date), full house frontmatter, idempotency (skip/refresh if it already exists), and atomic write + read-back. Determinism lives in that script, not here.
-- **Vault routing by content sensitivity:** default **KB** (tech). A map of health/therapy → **Wellness**; a **1,420 / T3 / recovery** source → the 1,420 vault, **confirm first, and never index it to Hindsight** (the compressed map inherits the source's sensitivity — sovereignty applies).
+- **Route by content sensitivity:** default to your general/technical notes. ⭐ **A map of a sensitive document is exactly as sensitive as the document** — the compression does not launder it. So a map of private material goes wherever that material already lives, **confirm before saving, and never index it into a shared or cloud-backed memory layer.**
 - **Wire it into the graph:** on save, add `related: [[…]]` wikilinks + a `## Related notes` block pointing at vault notes the branches touch (reuse the cross-link detection, aimed outward) — so the map isn't an island.
 - **Route the payload (offer, don't auto-fire):** offer each open question as a Todoist capture; flag a cross-branch link that recurs across maps as an atom candidate (Neo4j via `atom-cypher-safe`). Your Shadow Offload Rule — don't let the cleverest output die in a file.
 

@@ -1,12 +1,12 @@
 ---
 name: notebooklm-bulk-label
-description: Safely label/organize the SOURCES of a large NotebookLM notebook (~50+ sources) when the native "auto-label" times out or would overwrite existing manual labels. Labels only-unlabeled sources via the non-destructive path, falls back to approval-gated per-source assignment for huge notebooks (100-318+ sources), NEVER runs the destructive full-reorganize, and gates T3 (health/DID) notebooks behind explicit opt-in. Triggers — "label my notebook", "organize notebooklm sources", "auto-label timed out / won't finish", "label the big notebook", "bulk label notebooklm", "/notebooklm-bulk-label". Use when a notebook is too big for the one-click auto-label, or you want to add labels to only the unlabeled sources without disturbing existing ones. Read-only by default until you approve each batch.
+description: Safely label/organize the SOURCES of a large NotebookLM notebook (~50+ sources) when the native "auto-label" times out or would overwrite existing manual labels. Labels only-unlabeled sources via the non-destructive path, falls back to approval-gated per-source assignment for huge notebooks (100-318+ sources), NEVER runs the destructive full-reorganize, and gates sensitive notebooks behind explicit opt-in. Triggers — "label my notebook", "organize notebooklm sources", "auto-label timed out / won't finish", "label the big notebook", "bulk label notebooklm", "/notebooklm-bulk-label". Use when a notebook is too big for the one-click auto-label, or you want to add labels to only the unlabeled sources without disturbing existing ones. Read-only by default until you approve each batch.
 ---
 
 # notebooklm-bulk-label
 
 ## Why this exists
-NotebookLM's one-click **auto-label** runs the AI over *all* sources in a single pass. On large notebooks (Nile has many at 100-318 sources) that pass **times out / never completes**, leaving the notebook unorganized. Worse, the obvious "redo it" path (`label reorganize` with the default `unlabeled_only=False`) **wipes every existing label and re-derives from scratch** — destroying any manual curation. This skill gets a big notebook labeled **incrementally, non-destructively, and with your approval**, and is safe to re-run.
+NotebookLM's one-click **auto-label** runs the AI over *all* sources in a single pass. On large notebooks (100-318 sources) that pass **times out / never completes**, leaving the notebook unorganized. Worse, the obvious "redo it" path (`label reorganize` with the default `unlabeled_only=False`) **wipes every existing label and re-derives from scratch** — destroying any manual curation. This skill gets a big notebook labeled **incrementally, non-destructively, and with your approval**, and is safe to re-run.
 
 All operations go through the single `mcp__notebooklm-mcp__label` tool (+ `notebook_get`, `notebook_describe`, `source_describe`, `note`).
 
@@ -24,14 +24,14 @@ All operations go through the single `mcp__notebooklm-mcp__label` tool (+ `noteb
 
 ## HARD GATES (do not bypass)
 1. **Never destroy curation.** Never call `reorganize unlabeled_only=False`, `auto` (on a labeled notebook), or `delete` unless Nile explicitly asks for that exact destructive action. The default mode only ADDS labels to unlabeled sources.
-2. **T3 gate.** Notebooks holding health / DID / clinical / recovery material (e.g. "Health Baseline & Symptom Map (T3)", "DID Methodology", "DID: Shadow Traits", "DID: Skill Stacking", "NeuroScience + DID", "Neurobiology…Dissociative", "BPD…", "Internal Family Systems", "Stoic…Dissociation") are **T3-sensitive**. Do NOT run label operations on them unless Nile names the notebook explicitly for this task. Labeling re-runs Google's AI over the source text — treat as a fresh T3 cloud exposure decision each time.
+2. **Sensitivity gate.** Some notebooks hold private material — medical, legal, personal, or otherwise not yours to re-process. Do NOT run label operations on one unless its owner names that notebook explicitly for this task. ⭐ **The reason is easy to miss: labeling is not a formatting change.** It re-runs Google's AI over the full source text, so it is a **fresh cloud-exposure decision every time** — including on sources that were reviewed and accepted once already.
 3. **Approval-gated.** In the chunked fallback, PROPOSE the (source → label) assignments for a batch and wait for Nile's OK before applying. Never mass-assign silently.
 4. **Idempotent.** Only ever act on *unlabeled* sources, so re-running after an interruption resumes cleanly and never double-labels.
 
 ## Procedure
 
-### 1. Scope + T3 check
-- Confirm the target notebook id (`notebook_list` if needed). Apply the **T3 gate** above — if sensitive, stop and get explicit go.
+### 1. Scope + sensitivity check
+- Confirm the target notebook id (`notebook_list` if needed). Apply the **sensitivity gate** above — if sensitive, stop and get an explicit go.
 - `notebook_get <id>` → source count. `label <id> action=list` → existing labels (and, if the output exposes member source-ids, current coverage).
 
 ### 2. Try the cheap, safe native path FIRST
@@ -44,7 +44,7 @@ All operations go through the single `mcp__notebooklm-mcp__label` tool (+ `noteb
 1. **Taxonomy:** reuse existing labels from step 1. If none/sparse, derive a small candidate set from `notebook_describe <id>` (suggested topics) → propose the label names to Nile → on OK, `label create` each.
 2. **Per-source, in chunks of ~15-20 unlabeled sources:**
    - For each source: `source_describe <source_id>` → read its summary + keyword chips → pick the best-fit label.
-   - PRESENT the batch as a `source-title → proposed label` table → **wait for Nile's approval / edits**.
+   - PRESENT the batch as a `source-title → proposed label` table → **wait for approval / edits**.
    - On OK: `label move_source label_id=<L> source_id=<S>` for each (sources may take multiple labels).
 3. Repeat until no unlabeled sources remain. Report progress per chunk (`N/total labeled`).
 
