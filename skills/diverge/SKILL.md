@@ -144,9 +144,9 @@ template.
 - The decision is already made → re-litigating it is a rabbit hole with good manners
 - One good frame would do → just ask that one question directly, in-context
 - The work is execution → `diverge` produces options, not progress
-- It is tender / T3 / personal material → ⛔ `sounding-board` and `interview-mode` own that ground, and
-  they are consent-gated. Do not fan out agents over Nile's life.
-- Nile said *"I have work to do"* → stop generating options; give the First Brick
+- It is tender or personal material → ⛔ a fan-out is the wrong instrument. Personal ground needs one
+  presence, invited, not a panel of agents generating angles on someone's life.
+- They said *"I have work to do"* → stop generating options; give the smallest next action
 
 ## Self-test
 

@@ -27,7 +27,7 @@ def slugify(text, fallback):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--vault", required=True)               # resolved vault root (KB/Wellness/1,420…)
+    ap.add_argument("--vault", required=True)               # resolved vault root
     ap.add_argument("--subdir", default="Mind Maps")
     ap.add_argument("--source", required=True)              # original path/url, or "pasted"
     ap.add_argument("--title", required=True)
