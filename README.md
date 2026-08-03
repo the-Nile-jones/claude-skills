@@ -54,9 +54,6 @@ supporting files); there is nothing to build and no dependencies to install.
   and others. Those are someone else's work — credited and linked, not republished.
 - **Skills that carry private specifics.** Several of mine are wired to my own paths, task IDs and
   documents. They stay local rather than get half-scrubbed into something misleading.
-- **Anything involving other people.** Some of what I use Claude for touches health, recovery and
-  people who did not sign up to be in a public repo. Those are not published, and the decision
-  isn't a scrubbing problem.
 
 ## License
 
