@@ -30,6 +30,7 @@ skills below are mostly instruments for telling those two states apart.
 | **what-should-i-automate** | Finds the repetitive work worth automating, and — more usefully — the work that isn't. |
 | **document-mind-map** | Turns a long document into a navigable structural map instead of a summary. |
 | **notebooklm-bulk-label** | Bulk source labelling / reorganisation for NotebookLM corpora. |
+| **interview-mode** | Wide-first diagnostic interviewing. Open the problem space before committing to a frame, hold hypotheses in parallel, and treat a correction as the map widening rather than a loss. Guards first-frame fixation *and* its opposite — widening that never lands. |
 
 Also mine, in its own repo: **[job-scout](https://github.com/the-Nile-jones/job-scout)** — pulls
 job postings from Greenhouse/Lever/Ashby + RemoteOK + HN "Who is hiring", and refuses to merge a
