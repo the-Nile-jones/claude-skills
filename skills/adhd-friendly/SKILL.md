@@ -1,11 +1,11 @@
 ---
-name: diverge
+name: adhd-friendly
 description: >-
   Generate a genuinely WIDE set of options for one open question by fanning out independent,
   context-isolated agents under different named cognitive frames, then converging to a short list plus
   the traps. Use this when the first three answers all sound like the same answer, when a naming /
   architecture / positioning / approach decision feels prematurely settled, or when Nile says "what
-  else", "give me options", "widen this", "what am I not seeing", "diverge", or "/diverge". The point is
+  else", "give me options", "widen this", "what am I not seeing", "diverge", or "/adhd-friendly". The point is
   BREADTH BEFORE COMMITMENT — it exists because a single context anchors on its own first idea and then
   defends it. SKIP when: the answer is a lookup, the root cause is already known, the question is closed
   ("quick", "standard", "canonical", "textbook", "just tell me"), a decision is already made and this
@@ -13,7 +13,7 @@ description: >-
   roughly one agent per frame plus a converge pass — so it asks before spending.
 ---
 
-# diverge
+# adhd-friendly
 
 > **Inherits** `~/.claude/rules/nile_patterns.md` § *Skills Inherit These* — ceremony ∝ stakes (this skill's full pipeline is its maximum, not its floor) · one recommendation, not a manufactured slate · the procedure is not the deliverable · signal codes outrank this skill's verbosity · **dedup before proposing anything new**.
 
@@ -24,25 +24,25 @@ commitment. Three "alternatives" produced in one thread are three samples from t
 
 **This skill is already half-owned by three installed skills. Read this before assuming it is new.**
 
-| Existing | What it does | How `diverge` differs |
+| Existing | What it does | How `adhd-friendly` differs |
 |---|---|---|
 | `adversarial-reviewer` | 3 named personas (Saboteur / New Hire / Security Auditor) find issues | Those personas run **in one context** and **critique existing work**. This generates, and the branches genuinely cannot see each other. |
 | `article-review` | 8-lens bank + the `NxN` dial | Same — critique of a written artifact, one context. |
 | `interview-mode` | "Open the aperture first… the first plausible frame is a *trap*" | That is the **diagnosis** this skill acts on. ⛔ Tier C, consent-gated — cite it, never auto-fire it, never absorb it. |
 
-⇒ The only two things `diverge` adds: **genuine context independence** and **generation rather than
+⇒ The only two things `adhd-friendly` adds: **genuine context independence** and **generation rather than
 critique**. If a run does not need both, one of the three above is the cheaper right answer — say so.
 
 **Relationship to `brainstorming`:** `brainstorming` claims *"before any creative work"* and forbids
 invoking other skills. It is a **one-question-at-a-time requirements interview** that narrows toward a
-spec. `diverge` runs **upstream** of it — widen first, then hand a shortlist into its interview. Never run
-`diverge` inside a `brainstorming` session; finish or exit that first.
+spec. `adhd-friendly` runs **upstream** of it — widen first, then hand a shortlist into its interview. Never run
+`adhd-friendly` inside a `brainstorming` session; finish or exit that first.
 
 ## Phase 0 — Pre-flight (always; it is three questions and it is allowed to abort)
 
 **1. Is the question actually open?** Abort and answer directly if it is a lookup, a known root cause, or
 phrased closed (*"quick"*, *"standard"*, *"canonical"*, *"textbook"*, *"just tell me"*). If Nile typed
-`/diverge` explicitly, **skip this check — he opted in, do not second-guess him.**
+`/adhd-friendly` explicitly, **skip this check — he opted in, do not second-guess him.**
 
 **2. Say what it will cost, then ask.**
 
@@ -143,7 +143,7 @@ template.
 
 - The decision is already made → re-litigating it is a rabbit hole with good manners
 - One good frame would do → just ask that one question directly, in-context
-- The work is execution → `diverge` produces options, not progress
+- The work is execution → `adhd-friendly` produces options, not progress
 - It is tender or personal material → ⛔ a fan-out is the wrong instrument. Personal ground needs one
   presence, invited, not a panel of agents generating angles on someone's life.
 - They said *"I have work to do"* → stop generating options; give the smallest next action

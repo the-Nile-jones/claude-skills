@@ -23,7 +23,7 @@ skills below are mostly instruments for telling those two states apart.
 |---|---|
 | **zero-as-answer** | Audits code for the silent-failure family: places where an *absence* is treated as a *result*, so "I looked and found nothing" and "I couldn't look" produce the same output. |
 | **atom-cypher-safe** | Safe write-layer for a Neo4j knowledge graph. Gates destructive Cypher, enforces schema, dedups before insert, and read-back-verifies every write. |
-| **diverge** | Fans out context-isolated agents under different named cognitive frames, then converges to a shortlist plus the traps. For when the first three answers all sound like the same answer. |
+| **adhd-friendly** | Fans out context-isolated agents under different named cognitive frames, then converges to a shortlist plus the traps. For when the first three answers all sound like the same answer. |
 | **handoff** | Produces a session handoff another agent (or a later you) can actually act on — state, open threads, and what was verified vs. assumed. |
 | **skill-scout** | Recon-and-triage for external skill sources. Dedups every candidate against what you already have *first*, then reports new / already-covered / diminishing-returns. |
 | **prompt-forge** | Turns a rough task into a paste-ready prompt. Best for prompts headed somewhere else — a fresh session, a subagent, another machine. |
